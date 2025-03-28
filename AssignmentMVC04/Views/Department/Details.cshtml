@@ -1,0 +1,30 @@
+﻿@model Company.Service.Interfaces.Dto.DepartmentDto
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Department Details</h1>
+<br />
+<br />
+
+<form asp-action="Create">
+    <div class="form-group">
+        <label class="col-form-label" asp-for="Code"></label>
+        <input type="text" asp-for="Code" class="form-control" />
+        <span asp-validation-for="Code" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label class="col-form-label" asp-for="Name"></label>
+        <input type="text" asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label class="col-form-label" asp-for="CreateAT"></label>
+        <input asp-for="CreateAT" class="form-control" />
+    </div>
+
+    <input type="submit" value="Create" class="btn btn-primary" />
+    <a asp-action="Index" class="btn btn-light">Back To List</a>
+</form>

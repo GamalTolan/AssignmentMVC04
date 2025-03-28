@@ -1,0 +1,45 @@
+﻿@model List<Company.Service.Interfaces.Dto.DepartmentDto>
+
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<a asp-controller="Department" asp-action="Create" class="btn btn-primary">Create New Department</a>
+<div class="mt-5 alert alert-dark"></div>
+<h3>@TempData["TextTempMessage"]</h3>
+
+@if (Model.Count() > 0)
+{
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(D => Model.FirstOrDefault().Code)</th>
+                <th>@Html.DisplayNameFor(D => Model.FirstOrDefault().Name)</th>
+                <th>@Html.DisplayNameFor(D => Model.FirstOrDefault().CreateAT)</th>
+                <th>Details</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var department in Model)
+            {
+                <tr>
+                    <td>@department.Code</td>
+                    <td>@department.Name</td>
+                    <td>@department.CreateAT</td>
+
+                    <partial name="_ActionButtonsPartialView" model="@department.Id.ToString()" />
+
+                </tr>
+            }
+        </tbody>
+    </table>
+
+}
+else
+{
+    <div class="mt-5 alert alert-warning"></div>
+    <h3>There Is no Departments</h3>
+}
